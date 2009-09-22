@@ -15,6 +15,7 @@ BuildRequires: libanjuta-devel
 BuildRequires: libgnomecanvas2-devel
 BuildRequires: graphviz-devel
 BuildRequires: binutils-devel
+BuildRequires: intltool
 Requires: anjuta2
 
 %description
