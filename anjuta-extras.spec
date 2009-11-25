@@ -1,6 +1,6 @@
 %define name anjuta-extras
 %define version 2.28.0
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary: Extensions for the Anjuta development environment
 Name: %{name}
