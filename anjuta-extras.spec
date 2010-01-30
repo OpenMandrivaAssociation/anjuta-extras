@@ -1,12 +1,13 @@
 %define name anjuta-extras
-%define version 2.28.0
-%define release %mkrel 2
+%define version 2.29.2.0
+%define release %mkrel 1
 
 Summary: Extensions for the Anjuta development environment
 Name: %{name}
 Version: %{version}
 Release: %{release}
 Source0: http://ftp.gnome.org/pub/GNOME/sources/%name/%{name}-%{version}.tar.bz2
+Patch0: anjuta-extras-2.29.2.0-link.patch
 License: GPLv2+
 Group: Development/Other
 Url: http://anjuta.sourceforge.net/
@@ -15,7 +16,7 @@ BuildRequires: libanjuta-devel
 BuildRequires: libgnomecanvas2-devel
 BuildRequires: graphviz-devel
 BuildRequires: binutils-devel
-BuildRequires: intltool
+BuildRequires: intltool gnome-common
 Requires: anjuta2
 
 %description
@@ -33,8 +34,10 @@ This package contains extensions to Anjuta:
 
 %prep
 %setup -q
+%patch0 -p0 -b .link
 
 %build
+NOCONFIGURE=yes gnome-autogen.sh
 %configure2_5x
 %make
 
