@@ -1,5 +1,5 @@
 %define name anjuta-extras
-%define version 2.31.1.0
+%define version 2.31.90.0
 %define release %mkrel 1
 
 Summary: Extensions for the Anjuta development environment
@@ -8,8 +8,6 @@ Version: %{version}
 Release: %{release}
 Source0: http://ftp.gnome.org/pub/GNOME/sources/%name/%{name}-%{version}.tar.bz2
 Patch0: anjuta-extras-2.29.2.0-link.patch
-Patch1: anjuta-extras-port-profiler-to-new-symbol-db-interface.patch
-Patch2: anjuta-extras-port-scintilla-to-new-symbol-db-interface.patch
 License: GPLv2+
 Group: Development/Other
 Url: http://anjuta.sourceforge.net/
@@ -36,8 +34,6 @@ This package contains extensions to Anjuta:
 %prep
 %setup -q
 %patch0 -p0 -b .link
-%patch1 -p1
-%patch2 -p1
 
 %build
 NOCONFIGURE=yes gnome-autogen.sh
