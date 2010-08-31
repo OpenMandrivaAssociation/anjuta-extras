@@ -2,6 +2,8 @@
 %define version 2.31.91.0
 %define release %mkrel 1
 
+%define anjuta 2.31.91.0
+
 Summary: Extensions for the Anjuta development environment
 Name: %{name}
 Version: %{version}
@@ -11,13 +13,13 @@ License: GPLv2+
 Group: Development/Other
 Url: http://anjuta.sourceforge.net/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: libanjuta-devel >= 2.31.91.0
+BuildRequires: libanjuta-devel >= %anjuta
 BuildRequires: libgnomecanvas2-devel
 BuildRequires: graphviz-devel
 BuildRequires: binutils-devel
 BuildRequires: intltool
 #BuildRequires: gnome-common
-Requires: anjuta2
+Requires: anjuta2 >= %anjuta
 
 %description
 Anjuta DevStudio is a versatile Integrated Development Environment (IDE)
