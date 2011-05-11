@@ -14,11 +14,11 @@ Group: Development/Other
 Url: http://anjuta.sourceforge.net/
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: libanjuta-devel >= %anjuta
+BuildRequires: GConf2 libGConf2-devel
 BuildRequires: libgnomecanvas2-devel
 BuildRequires: graphviz-devel
 BuildRequires: binutils-devel
 BuildRequires: intltool
-#BuildRequires: gnome-common
 Requires: anjuta2 >= %anjuta
 
 %description
