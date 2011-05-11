@@ -1,6 +1,6 @@
 %define name anjuta-extras
 %define version 2.32.1.1
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define anjuta 2.32.0.0
 
