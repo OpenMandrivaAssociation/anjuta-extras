@@ -1,25 +1,22 @@
-%define name anjuta-extras
-%define version 2.32.1.1
-%define release %mkrel 2
+%define url_ver %(echo %{version}|cut -d. -f1,2)
 
-%define anjuta 2.32.0.0
-
-Summary: Extensions for the Anjuta development environment
-Name: %{name}
-Version: %{version}
-Release: %{release}
-Source0: http://ftp.gnome.org/pub/GNOME/sources/%name/%{name}-%{version}.tar.bz2
-License: GPLv2+
-Group: Development/Other
-Url: http://anjuta.sourceforge.net/
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: libanjuta-devel >= %anjuta
-BuildRequires: GConf2 libGConf2-devel
-BuildRequires: libgnomecanvas2-devel
-BuildRequires: graphviz-devel
-BuildRequires: binutils-devel
-BuildRequires: intltool
-Requires: anjuta2 >= %anjuta
+Name:		anjuta-extras
+Version:	3.6.0
+Release:	%mkrel 1
+Summary:	Extensions for the Anjuta development environment
+Source0:	http://download.gnome.org/sources/%name/%{url_ver}/%{name}-%{version}.tar.xz
+License:	GPLv2+
+Group:		Development/Other
+Url:		http://anjuta.sourceforge.net/
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.16.0
+BuildRequires:  pkgconfig(libanjuta-3.0) >= 3.1.0
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:	pkgconfig(gnome-doc-utils)
+BuildRequires:	graphviz-devel
+BuildRequires:	binutils-devel
+BuildRequires:	intltool
+BuildRequires:	gnome-common
+Requires:	anjuta >= 3.1.0
 
 %description
 Anjuta DevStudio is a versatile Integrated Development Environment (IDE)
@@ -35,34 +32,28 @@ This package contains extensions to Anjuta:
 
 %prep
 %setup -q
-#NOCONFIGURE=yes gnome-autogen.sh
 
 %build
-%configure2_5x
+%configure2_5x --disable-static
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
-rm -f %buildroot%_libdir/anjuta/*a
-%find_lang %name
 
-%clean
-rm -rf %{buildroot}
+#we don't want these
+find %{buildroot} -name "*.la" -exec rm -rf {} \;
 
-%files -f %name.lang
-%defattr(-,root,root)
+%find_lang %{name}
+
+%files -f %{name}.lang
 %doc ChangeLog AUTHORS NEWS
-#README
-%_sysconfdir/gconf/schemas/anjuta-editor-scintilla.schemas
-%_sysconfdir/gconf/schemas/anjuta-valgrind.schemas
-%_libdir/anjuta/anjuta-editor.plugin
-%_libdir/anjuta/anjuta-sample.plugin
-%_libdir/anjuta/anjuta-scratchbox.plugin
-%_libdir/anjuta/anjuta-valgrind.plugin
-%_libdir/anjuta/*.so*
-%_libdir/anjuta/profiler.plugin
-%_datadir/anjuta/glade/*
-%_datadir/anjuta/properties/*
-%_datadir/anjuta/ui/*
-%_datadir/pixmaps/anjuta/*
+%{_datadir}/glib-2.0/schemas/*.xml
+%{_libdir}/anjuta/anjuta-*.plugin
+%{_libdir}/anjuta/libanjuta-*.so
+%{_datadir}/anjuta/glade/anjuta-*
+%dir %{_datadir}/anjuta/properties
+%{_datadir}/anjuta/properties/*.properties
+%{_datadir}/anjuta/ui/anjuta-sample.ui
+%{_datadir}/anjuta/ui/anjuta-scintilla.xml
+%{_datadir}/pixmaps/anjuta/anjuta-*
+%{_datadir}/gnome/help/anjuta-manual/*/scintilla-plugin.page
