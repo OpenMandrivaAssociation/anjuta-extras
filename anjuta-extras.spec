@@ -2,7 +2,7 @@
 
 Name:		anjuta-extras
 Version:	3.6.0
-Release:	%mkrel 1
+Release:	2
 Summary:	Extensions for the Anjuta development environment
 Source0:	http://download.gnome.org/sources/%name/%{url_ver}/%{name}-%{version}.tar.xz
 License:	GPLv2+
