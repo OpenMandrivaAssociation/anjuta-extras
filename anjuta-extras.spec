@@ -16,6 +16,8 @@ BuildRequires:	graphviz-devel
 BuildRequires:	binutils-devel
 BuildRequires:	intltool
 BuildRequires:	gnome-common
+BuildRequires: gcc-c++, gcc, gcc-cpp
+
 Requires:	anjuta >= 3.1.0
 
 %description
@@ -34,6 +36,10 @@ This package contains extensions to Anjuta:
 %setup -q
 
 %build
+export CC=gcc
+export CXX=g++
+export CFLAGS+=" -fno-strict-aliasing -Wno-error=deprecated-declarations"
+
 %configure2_5x --disable-static
 %make
 
