@@ -7,7 +7,7 @@ Summary:	Extensions for the Anjuta development environment
 Source0:	http://download.gnome.org/sources/%name/%{url_ver}/%{name}-%{version}.tar.xz
 License:	GPLv2+
 Group:		Development/Other
-Url:		http://anjuta.sourceforge.net/
+Url:		https://anjuta.sourceforge.net/
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.16.0
 BuildRequires:  pkgconfig(libanjuta-3.0) >= 3.1.0
 BuildRequires:  pkgconfig(libxml-2.0)
